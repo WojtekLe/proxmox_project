@@ -1,13 +1,13 @@
 project: payment-api
+owner: wojtek
 
-size: medium
-
-template: ubuntu-24.04
+vm:
+  size: medium
+  template: ubuntu-24.04
 
 software:
-  docker: true
-  php: true
-  nodejs: false
+  - docker
+  - git
 
 lifetime:
   days: 30
