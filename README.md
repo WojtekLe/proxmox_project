@@ -1,5 +1,26 @@
-# proxmox_project
-simple virtual machine in proxmox
+# Developer Provisioning Platform
+
+Infrastructure as Code platform for automated provisioning of developer environments on Proxmox using Terraform and Ansible.
+
+## Goals
+
+- Infrastructure as Code
+- Reproducible environments
+- Zero manual configuration
+- GitOps workflow
+- Fast disaster recovery
+
+## Stack
+
+- Proxmox
+- Terraform
+- Ansible
+- GitHub Actions
+- Ubuntu
+
+
+## proxmox_project
+Simple virtual machine in proxmox
 
 ### Cel biznesowy
 1. Deweloper zgłasza potrzebę nowej maszyny.
