@@ -1,0 +1,10 @@
+max_lifetime_days: 30
+
+allowed_sizes:
+  - small
+  - medium
+  - large
+
+allow_custom_vm_name: false
+
+default_template: ubuntu-24.04

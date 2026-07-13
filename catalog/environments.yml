@@ -1,0 +1,9 @@
+dev:
+  vlan: 20
+  network: dhcp
+
+test:
+  vlan: 30
+
+prod:
+  vlan: 40

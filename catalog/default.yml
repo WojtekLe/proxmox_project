@@ -1,0 +1,7 @@
+size: small
+
+template: ubuntu-24.04
+
+lifetime: 30
+
+software: []

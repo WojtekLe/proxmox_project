@@ -1,0 +1,13 @@
+project: payment-api
+
+size: medium
+
+template: ubuntu-24.04
+
+software:
+  docker: true
+  php: true
+  nodejs: false
+
+lifetime:
+  days: 30
