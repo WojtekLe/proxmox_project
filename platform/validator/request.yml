@@ -1,0 +1,13 @@
+project: payment-api
+
+template: ubuntu-24.04
+
+cpu: 2
+
+memory: 4096
+
+disk: 60
+
+docker: true
+
+php: false
