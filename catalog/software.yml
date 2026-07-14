@@ -1,0 +1,11 @@
+docker:
+  role: docker
+
+git:
+  role: git
+
+php:
+  role: php
+
+nodejs:
+  role: nodejs

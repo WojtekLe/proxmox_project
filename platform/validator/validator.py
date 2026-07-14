@@ -1,0 +1,57 @@
+import sys
+from utils import load_yaml, validate_request, get_vm_size, create_tfvars
+
+
+def main():
+
+    print("Verify arguments...")
+    if len(sys.argv) > 2: 
+        print("Too many arguments. Please provide one yaml file name.")
+        exit(1)
+    else:    
+        file_path = sys.argv[1] 
+
+    print("Verify yaml files...")
+    try:
+        request = load_yaml(file_path)
+        if request is None:
+            print("Yaml file {} is empty.".format(file_path))    
+            exit(2)
+
+        sizes_file = "platform\\validator\\sizes.yml"
+        sizes = load_yaml(sizes_file)
+        if sizes is None:
+            print("Yaml file sizes.yml is empty.".format(sizes_file))    
+            exit(2)
+
+        errors = validate_request(request, sizes)
+
+        if errors:
+            for error in errors:
+                print(error)
+            exit(1)
+        else:
+            print("Validation yaml files successful")        
+
+    except FileNotFoundError:
+        print("Request file not found.")
+        exit(1)
+
+    print("Verify vm size...")
+    vm_config = get_vm_size(
+        request["vm"]["size"],
+        sizes
+    )
+
+    cpu = vm_config["cpu"]
+    memory = vm_config["memory"]
+    disk = vm_config
+
+    print(cpu, memory, disk)
+
+    print("Create tfvars...")
+    create_tfvars(request, sizes)
+        
+
+if __name__ == "__main__":
+    main()

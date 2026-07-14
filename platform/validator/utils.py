@@ -1,0 +1,51 @@
+# utils.py>
+
+import yaml
+import json
+
+def load_yaml(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+def validate_request(request, sizes):
+
+    errors = []
+
+    size = request.get("vm", {}).get("size")
+
+    if not size:
+        errors.append("Missing vm.size")
+
+    elif size not in sizes:
+        errors.append(
+            f"Invalid vm.size '{size}'. "
+            f"Allowed values: {', '.join(sizes.keys())}"
+        )
+
+    return errors
+
+
+def get_vm_size(size_name, sizes):
+    try:
+        return sizes[size_name]
+    except KeyError:
+        raise ValueError(f"Unknown VM size: {size_name}")
+
+
+def create_tfvars(request, sizes):
+
+    vm_size_name = request["vm"]["size"]
+
+    vm_size = sizes[vm_size_name]
+
+    tfvars = {
+        "project": request["project"],
+        "owner": request["owner"],
+        "template": request["vm"]["template"],
+        "cpu": vm_size["cpu"],
+        "memory": vm_size["memory"],
+        "disk": vm_size["disk"]
+    }
+
+    with open("requests/terraform.tfvars.json", "w") as f:
+        json.dump(tfvars, f, indent=2)

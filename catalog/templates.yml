@@ -1,0 +1,5 @@
+ubuntu-22.04:
+  vmid: 900
+
+ubuntu-24.04:
+  vmid: 901
