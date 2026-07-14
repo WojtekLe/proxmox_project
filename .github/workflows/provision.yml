@@ -28,12 +28,12 @@ jobs:
 
       - run: pip install pyyaml
 
-      - run: python validator.py
+      - run: python platform/validator/validator.py "requests/environment.yaml"
 
       - uses: actions/upload-artifact@v4
         with:
           name: tfvars
-          path: terraform.tfvars.json
+          path: requests/terraform.tfvars.json
 
   terraform:
     needs: validate
