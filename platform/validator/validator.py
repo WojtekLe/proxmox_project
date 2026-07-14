@@ -1,23 +1,28 @@
 import sys
-from utils import load_yaml, validate_request
+from utils import load_yaml, validate_request, get_vm_size
 
 
 def main():
 
+    print("Verify arguments...")
     if len(sys.argv) > 2: 
         print("Too many arguments. Please provide one yaml file name.")
         exit(1)
     else:    
         file_path = sys.argv[1] 
 
+    print("Verify yaml files...")
     try:
-
         request = load_yaml(file_path)
         if request is None:
-            print("Yaml file empty.")    
+            print("Yaml file {} is empty.".format(file_path))    
             exit(2)
 
-        sizes = load_yaml("platform\\validator\\sizes.yml")
+        sizes_file = "platform\\validator\\sizes.yml"
+        sizes = load_yaml(sizes_file)
+        if sizes is None:
+            print("Yaml file sizes.yml is empty.".format(sizes_file))    
+            exit(2)
 
         errors = validate_request(request, sizes)
 
@@ -26,13 +31,24 @@ def main():
                 print(error)
             exit(1)
         else:
-            print("Validation successful")        
+            print("Validation yaml files successful")        
 
     except FileNotFoundError:
-
         print("Request file not found.")
-
         exit(1)
+
+
+    vm_config = get_vm_size(
+        request["vm"]["size"],
+        sizes
+    )
+
+    cpu = vm_config["cpu"]
+    memory = vm_config["memory"]
+    disk = vm_config
+
+    print(cpu, memory, disk)
+        
 
 if __name__ == "__main__":
     main()

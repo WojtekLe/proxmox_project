@@ -22,3 +22,10 @@ def validate_request(request, sizes):
         )
 
     return errors
+
+
+def get_vm_size(size_name, sizes):
+    try:
+        return sizes[size_name]
+    except KeyError:
+        raise ValueError(f"Unknown VM size: {size_name}")
