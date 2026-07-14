@@ -28,6 +28,11 @@ jobs:
 
       - run: pip install pyyaml
 
+      - run: |
+              echo "Build artifacts PSS"
+              pwd
+              ls -la
+
       - run: python platform/validator/validator.py "requests/environment.yaml"
 
       - uses: actions/upload-artifact@v4
