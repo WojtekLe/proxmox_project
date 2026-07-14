@@ -1,5 +1,5 @@
 import sys
-from utils import load_yaml
+from utils import load_yaml, validate_request
 
 
 def main():
@@ -13,10 +13,20 @@ def main():
     try:
 
         request = load_yaml(file_path)
-        if request == None:
+        if request is None:
             print("Yaml file empty.")    
             exit(2)
-        print(request)
+
+        sizes = load_yaml("platform\\validator\\sizes.yml")
+
+        errors = validate_request(request, sizes)
+
+        if errors:
+            for error in errors:
+                print(error)
+            exit(1)
+        else:
+            print("Validation successful")        
 
     except FileNotFoundError:
 
@@ -25,4 +35,4 @@ def main():
         exit(1)
 
 if __name__ == "__main__":
-    main()    
+    main()
