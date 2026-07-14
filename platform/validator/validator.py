@@ -1,5 +1,5 @@
 import sys
-from utils import load_yaml, validate_request, get_vm_size
+from utils import load_yaml, validate_request, get_vm_size, create_tfvars
 
 
 def main():
@@ -37,7 +37,7 @@ def main():
         print("Request file not found.")
         exit(1)
 
-
+    print("Verify vm size...")
     vm_config = get_vm_size(
         request["vm"]["size"],
         sizes
@@ -48,6 +48,9 @@ def main():
     disk = vm_config
 
     print(cpu, memory, disk)
+
+    print("Create tfvars...")
+    create_tfvars(request, sizes)
         
 
 if __name__ == "__main__":
