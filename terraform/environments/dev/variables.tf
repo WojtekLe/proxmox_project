@@ -21,3 +21,11 @@ variable "memory" {
 variable "disk" {
   type = number
 }
+
+variable "proxmox_token_id" {
+  sensitive = true
+}
+
+variable "proxmox_token_secret" {
+  sensitive = true
+}
