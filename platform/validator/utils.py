@@ -3,9 +3,5 @@
 import yaml
 
 def load_yaml(path):
-    try:
-        with open(path, 'r') as f:
-            data = yaml.save_load(f)
-            return data
-    except FileNotFoundError:        
-        print("File {} not found".format(path))
+    with open(path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)

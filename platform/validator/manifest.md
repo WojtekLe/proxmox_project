@@ -35,3 +35,7 @@ Validator niczego nie zmienia.
 5. Deterministic
 
 Ten sam request zawsze daje ten sam wynik.
+
+Komponent nie podejmuje decyzji za swojego klienta.
+
+Niższa warstwa zgłasza problem. Wyższa warstwa decyduje, co z nim zrobić.
