@@ -56,10 +56,14 @@ jobs:
       - run: |
               echo "Build artifacts PSS"
               pwd
-              ls -la    
+              ls -la 
+              cp terraform.tfvars.json terraform\environments\dev\
+              cd terraform\environments\dev\  
+              pwd
+              ls -la
 
       - run: terraform init
 
-      - run: terraform plan -var-file=requests/terraform.tfvars.json
+      - run: terraform plan -var-file=terraform.tfvars.json
 
     #   - run: terraform apply -auto-approve -var-file=terraform.tfvars.json
