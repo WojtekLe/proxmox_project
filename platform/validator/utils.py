@@ -2,6 +2,7 @@
 
 import yaml
 import json
+import os
 
 def load_yaml(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -49,3 +50,10 @@ def create_tfvars(request, sizes):
 
     with open("requests/terraform.tfvars.json", "w") as f:
         json.dump(tfvars, f, indent=2)
+
+
+def check_files_exists(file_path):
+    if os.path.exists(file_path):
+        print("The file {} exists.".format(file_path))
+    else:
+        print("The file {} does not exist.".format(file_path))
