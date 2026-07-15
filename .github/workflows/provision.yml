@@ -66,6 +66,6 @@ jobs:
         working-directory: terraform/environments/dev
         run: terraform plan -var-file=terraform.tfvars.json
 
-      # - name: Terraform Apply
-      #   working-directory: terraform/environments/dev
-      #   run: terraform apply -auto-approve -var-file=terraform.tfvars.json
+      - name: Terraform Apply
+        working-directory: terraform/environments/dev
+        run: terraform apply -auto-approve -var-file=terraform.tfvars.json
