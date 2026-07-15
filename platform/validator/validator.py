@@ -6,12 +6,13 @@ import os
 def main():
 
     print("Verify arguments...")
-    if len(sys.argv) > 3: 
+    if len(sys.argv) > 4: 
         print("Too many arguments. Please provide two arguments.")
         exit(1)
     else:    
         file_path = sys.argv[1]
         sizes_file = sys.argv[2]
+        templates_file = sys.argv[3]
 
     print("Verify yaml files...")
     try:
@@ -31,6 +32,13 @@ def main():
         if sizes is None:
             print("Yaml file sizes.yml is empty.".format(sizes_file))    
             exit(2)
+
+        check_files_exists(templates_file)
+
+        template = load_yaml(templates_file)
+        if template is None:
+            print("Yaml file sizes.yml is empty.".format(templates_file))    
+            exit(2)    
 
         errors = validate_request(request, sizes)
 
@@ -58,7 +66,7 @@ def main():
     print(cpu, memory, disk)
 
     print("Create tfvars...")
-    create_tfvars(request, sizes)
+    create_tfvars(request, sizes, template)
         
 
 if __name__ == "__main__":

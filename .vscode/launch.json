@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "platform\\validator\\validator.py",
             "console": "integratedTerminal",
-            "args": "requests\\environment.yaml platform\\validator\\sizes.yml"
+            "args": "requests\\environment.yaml catalog\\sizes.yml catalog\\templates.yml"
         }
     ]
 }

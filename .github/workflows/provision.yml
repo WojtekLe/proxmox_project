@@ -33,7 +33,7 @@ jobs:
               pwd
               ls -la
 
-      - run: python platform/validator/validator.py requests/environment.yaml catalog/sizes.yml
+      - run: python platform/validator/validator.py requests/environment.yaml catalog/sizes.yml catalog/templates.yml
 
       - uses: actions/upload-artifact@v4
         with:
