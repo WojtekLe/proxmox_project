@@ -58,7 +58,7 @@ jobs:
               pwd
               ls -la 
               cp terraform.tfvars.json terraform/environments/dev/
-              cd terraform\environments/dev/  
+              cd terraform/environments/dev/  
               pwd
               ls -la
 
