@@ -56,6 +56,7 @@ jobs:
       - name: Copy tfvars
         run: |
           cp terraform.tfvars.json terraform/environments/dev/
+          ls -la terraform/environments/dev/
 
       - name: Terraform Init
         working-directory: terraform/environments/dev
