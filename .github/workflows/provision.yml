@@ -52,18 +52,19 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: tfvars
+      
+      - name: Copy tfvars
+        run: |
+          cp terraform.tfvars.json terraform/environments/dev/
 
-      - run: |
-              echo "Build artifacts PSS"
-              pwd
-              ls -la 
-              cp terraform.tfvars.json terraform/environments/dev/
-              cd terraform/environments/dev/  
-              pwd
-              ls -la
+      - name: Terraform Init
+        working-directory: terraform/environments/dev
+        run: terraform init
 
-      - run: terraform init
+      - name: Terraform Plan
+        working-directory: terraform/environments/dev
+        run: terraform plan -var-file=terraform.tfvars.json
 
-      - run: terraform plan -var-file=terraform.tfvars.json
-
-    #   - run: terraform apply -auto-approve -var-file=terraform.tfvars.json
+      # - name: Terraform Apply
+      #   working-directory: terraform/environments/dev
+      #   run: terraform apply -auto-approve -var-file=terraform.tfvars.json
