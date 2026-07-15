@@ -33,3 +33,7 @@ variable "proxmox_token_secret" {
 variable "vm_id" {
   type = number
 }
+
+variable "proxmox_url" {
+  type = string
+}
