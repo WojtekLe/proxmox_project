@@ -3,7 +3,7 @@ project: payment-api
 owner: wojtek
 
 vm:
-  size: large
+  size: medium
   template: ubuntu-24.04
 
 software:
