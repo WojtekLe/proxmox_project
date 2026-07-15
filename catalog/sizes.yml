@@ -1,16 +1,14 @@
-sizes:
+small:
+  cpu: 1
+  memory: 2048
+  disk: 40
 
-  small:
-    cpu: 1
-    memory: 2048
-    disk: 40
+medium:
+  cpu: 2
+  memory: 4096
+  disk: 60
 
-  medium:
-    cpu: 2
-    memory: 4096
-    disk: 60
-
-  large:
-    cpu: 4
-    memory: 8192
-    disk: 100
+large:
+  cpu: 4
+  memory: 8192
+  disk: 100
