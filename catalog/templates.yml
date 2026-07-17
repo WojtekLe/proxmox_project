@@ -1,8 +1,11 @@
-ubuntu-22.04:
-  vmid: 900
-
 ubuntu-24.04:
   vmid: 901
 
 ubuntu-26.04:
-  vmid: 100  
+  vmid: 100
+
+s.p.a.l.7.32:
+  vmid: 201 
+
+s.p.a.l.7.38:
+  vmid: 203
