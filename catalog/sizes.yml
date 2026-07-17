@@ -9,6 +9,11 @@ medium:
   disk: 60
 
 large:
+  cpu: 2
+  memory: 4096
+  disk: 100
+
+xlarge:
   cpu: 4
   memory: 8192
-  disk: 100
+  disk: 100  
