@@ -1,14 +1,14 @@
-project: payment-api
+project: dual-api
 
-owner: wojtek
+owner: krzysztof
 
 vm:
-  size: medium
-  template: ubuntu-26.04
+  size: large
+  template: s.p.a.l.7.38
 
-software:
-  - docker
-  - git
+# software:
+#   - docker
+#   - git
 
-lifetime:
-  days: 30
+# lifetime:
+#   days: 30
