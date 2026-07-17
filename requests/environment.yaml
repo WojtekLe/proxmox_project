@@ -1,10 +1,10 @@
-project: dual-api
+project: develop-api
 
-owner: krzysztof
+owner: michal
 
 vm:
   size: large
-  template: s.p.a.l.7.38
+  template: s.p.a.l.7.32
 
 # software:
 #   - docker
