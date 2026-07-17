@@ -1,4 +1,4 @@
-name: Provision VM
+name: Create VM
 
 # on:
 #   pull_request:
@@ -28,11 +28,6 @@ jobs:
 
       - run: pip install pyyaml
 
-      - run: |
-              echo "Build artifacts PSS"
-              pwd
-              ls -la
-
       - run: python platform/validator/validator.py requests/environment.yaml catalog/sizes.yml catalog/templates.yml
 
       - uses: actions/upload-artifact@v4
@@ -56,7 +51,6 @@ jobs:
       - name: Copy tfvars
         run: |
           cp terraform.tfvars.json terraform/environments/dev/
-          ls -la terraform/environments/dev/
 
       - name: Terraform Init
         working-directory: terraform/environments/dev
