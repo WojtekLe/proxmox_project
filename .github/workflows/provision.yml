@@ -63,3 +63,24 @@ jobs:
       - name: Terraform Apply
         working-directory: terraform/environments/dev
         run: terraform apply -auto-approve -var-file=terraform.tfvars.json
+
+  notify:
+    needs: terraform
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: tfvars
+      
+      - name: Copy tfvars
+        run: |
+          cp terraform.tfvars.json terraform/environments/dev/
+
+      - run: python platform/validator/validator.py requests/environment.yaml catalog/sizes.yml catalog/templates.yml
+
