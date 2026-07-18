@@ -75,12 +75,11 @@ jobs:
       - name: Get outputs
         working-directory: terraform/environments/dev
         run: terraform output -json > terraform-output.json
-
+      
       - uses: actions/upload-artifact@v4
         with:
           name: terraform-output
-          working-directory: terraform/environments/dev
-          path: terraform-output.json  
+          path: terraform/environments/dev/terraform-output.json
 
   # notify:
   #   needs: terraform
