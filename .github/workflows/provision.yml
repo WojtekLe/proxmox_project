@@ -81,23 +81,23 @@ jobs:
           name: terraform-output
           path: terraform/environments/dev/terraform-output.json
 
-  # notify:
-  #   needs: terraform
+  notify:
+    needs: terraform
 
-  #   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
 
-  #     - uses: actions/download-artifact@v4
-  #       with:
-  #         name: tfvars
+      - uses: actions/download-artifact@v4
+        with:
+          name: terraform-output
       
-  #     - name: Copy tfvars
-  #       run: |
-  #         cp terraform.tfvars.json terraform/environments/dev/
+      - name: Copy terraform-output
+        run: |
+          cp terraform-output.json notifier/
 
-  #     - run: python platform/validator/validator.py requests/environment.yaml catalog/sizes.yml catalog/templates.yml
+      - run: python notifier/notify.py notifier/terraform-output.json
 
