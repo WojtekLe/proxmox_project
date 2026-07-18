@@ -8,6 +8,10 @@ resource "proxmox_virtual_environment_vm" "vm" {
     vm_id = var.vm_id
   }
 
+  agent {
+    enabled = true
+  }
+
   cpu {
     cores = var.cpu
     type = "host"
