@@ -1,4 +1,4 @@
-name: Create VM
+name: Order VM
 
 # on:
 #   pull_request:
@@ -97,7 +97,7 @@ jobs:
       
       - name: Copy terraform-output
         run: |
-          cp terraform-output.json notifier/
+          cp terraform-output.json platform/notifier/
 
-      - run: python notifier/notify.py notifier/terraform-output.json
+      - run: python platform/notifier/notify.py platform/notifier/terraform-output.json
 
