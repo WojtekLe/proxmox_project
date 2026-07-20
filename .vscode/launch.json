@@ -8,9 +8,11 @@
             "name": "Python Debugger: Current File with Arguments",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            //"program": "platform\\validator\\validator.py",
+            "program": "platform\\notifier\\notify.py",
             "console": "integratedTerminal",
-            "args": "requests\\environment.yaml"
+            //"args": "requests\\environment.yaml catalog\\sizes.yml catalog\\templates.yml"
+            "args": "platform\\notifier\\terraform-output.json"
         }
     ]
 }

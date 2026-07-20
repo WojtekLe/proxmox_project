@@ -1,14 +1,14 @@
-project: payment-api
+project: develop-api2
 
-owner: wojtek
+owner: michal
 
 vm:
   size: large
-  template: ubuntu-24.04
+  template: s.p.a.l.7.38
 
-software:
-  - docker
-  - git
+# software:
+#   - docker
+#   - git
 
-lifetime:
-  days: 30
+# lifetime:
+#   days: 30

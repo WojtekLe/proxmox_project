@@ -1,0 +1,30 @@
+{
+  "vm_id": {
+    "sensitive": false,
+    "type": "number",
+    "value": 105
+  },
+  "vm_ip": {
+    "sensitive": false,
+    "type": [
+      "list",
+      [
+        "list",
+        "string"
+      ]
+    ],
+    "value": [
+      [
+        "192.168.1.32"
+      ],
+      [
+        "127.0.0.1"
+      ]
+    ]
+  },
+  "vm_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "develop-api2"
+  }
+}

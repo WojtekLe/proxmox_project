@@ -29,3 +29,11 @@ variable "proxmox_token_id" {
 variable "proxmox_token_secret" {
   sensitive = true
 }
+
+variable "vm_id" {
+  type = number
+}
+
+variable "proxmox_url" {
+  type = string
+}
