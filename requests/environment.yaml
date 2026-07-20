@@ -1,10 +1,10 @@
-project: develop-api2
+project: develop-dp
 
-owner: michal
+owner: wojtek
 
 vm:
-  size: large
-  template: s.p.a.l.7.38
+  size: medium
+  template: s.p.a.l.7.32
 
 # software:
 #   - docker
