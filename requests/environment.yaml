@@ -1,10 +1,10 @@
-project: dp2
+project: dp3
 
-owner: michal
+owner: wojtek
 
 vm:
-  size: medium
-  template: s.p.a.l.7.38
+  size: large
+  template: s.p.a.l.7.32
 
 # software:
 #   - docker
