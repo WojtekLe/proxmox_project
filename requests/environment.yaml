@@ -1,9 +1,9 @@
-project: dp4
+project: api-dp
 
-owner: wojtek
+owner: ewelina
 
 vm:
-  size: large
+  size: medium
   template: s.p.a.l.7.38
 
 # software:
