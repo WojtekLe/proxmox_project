@@ -4,7 +4,7 @@ owner: ewelina
 
 vm:
   size: medium
-  template: s.p.a.l.7.38
+  template: spal810
 
 # software:
 #   - docker
