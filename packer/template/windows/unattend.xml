@@ -31,6 +31,24 @@
         <ProtectYourPC>3</ProtectYourPC>
       </OOBE>
 
+      <UserAccounts>
+        <LocalAccounts>
+
+          <LocalAccount>
+            <Name>user</Name>
+            <DisplayName>user</DisplayName>
+            <Group>Administrators</Group>
+
+            <Password>
+              <Value>Start123$</Value>
+              <PlainText>true</PlainText>
+            </Password>
+
+          </LocalAccount>
+
+        </LocalAccounts>
+      </UserAccounts>
+
     </component>
 
   </settings>
