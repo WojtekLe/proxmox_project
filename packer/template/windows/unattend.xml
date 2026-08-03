@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+
+  <settings pass="oobeSystem">
+
+    <component name="Microsoft-Windows-International-Core"
+               processorArchitecture="amd64"
+               publicKeyToken="31bf3856ad364e35"
+               language="neutral"
+               versionScope="nonSxS">
+
+      <InputLocale>pl-PL</InputLocale>
+      <SystemLocale>pl-PL</SystemLocale>
+      <UILanguage>pl-PL</UILanguage>
+      <UserLocale>pl-PL</UserLocale>
+
+    </component>
+
+    <component name="Microsoft-Windows-Shell-Setup"
+               processorArchitecture="amd64"
+               publicKeyToken="31bf3856ad364e35"
+               language="neutral"
+               versionScope="nonSxS">
+
+      <OOBE>
+        <HideEULAPage>true</HideEULAPage>
+        <HideLocalAccountScreen>true</HideLocalAccountScreen>
+        <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+        <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+        <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+        <ProtectYourPC>3</ProtectYourPC>
+      </OOBE>
+
+      <UserAccounts>
+        <LocalAccounts>
+
+          <LocalAccount>
+            <Name>user</Name>
+            <DisplayName>user</DisplayName>
+            <Group>Administrators</Group>
+
+            <Password>
+              <Value>Start123$</Value>
+              <PlainText>true</PlainText>
+            </Password>
+
+          </LocalAccount>
+
+        </LocalAccounts>
+      </UserAccounts>
+
+    </component>
+
+  </settings>
+
+  <settings pass="specialize">
+
+    <component name="Microsoft-Windows-Shell-Setup"
+               processorArchitecture="amd64"
+               publicKeyToken="31bf3856ad364e35"
+               language="neutral"
+               versionScope="nonSxS">
+
+      <ComputerName>*</ComputerName>
+
+    </component>
+
+  </settings>
+
+</unattend>
