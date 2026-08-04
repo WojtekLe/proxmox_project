@@ -1,9 +1,9 @@
-project: api-dp
+project: api-dp3
 
-owner: ewelina
+owner: michal
 
 vm:
-  size: medium
+  size: large
   template: spal810
 
 # software:
