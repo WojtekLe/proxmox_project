@@ -1,5 +1,6 @@
 # utils.py>
 
+from urllib3 import request
 import yaml
 import json
 import os
@@ -11,45 +12,47 @@ def load_yaml(path):
 def validate_request(request, sizes):
 
     errors = []
+    for vm in request["vms"]:
+        size = vm["size"]
 
-    size = request.get("vm", {}).get("size")
+        if size not in sizes:
+            errors.append(f"Invalid VM size: {size}")
 
-    if not size:
-        errors.append("Missing vm.size")
-
-    elif size not in sizes:
-        errors.append(
-            f"Invalid vm.size '{size}'. "
-            f"Allowed values: {', '.join(sizes.keys())}"
+        elif size not in sizes:
+            errors.append(
+                f"Invalid vm.size '{size}'. "
+                f"Allowed values: {', '.join(sizes.keys())}"
         )
 
     return errors
 
 
-def get_vm_size(size_name, sizes):
-    try:
-        return sizes[size_name]
-    except KeyError:
-        raise ValueError(f"Unknown VM size: {size_name}")
+
+# def get_vm_size(size_name, sizes):
+#     try:
+#         return sizes[size_name]
+#     except KeyError:
+#         raise ValueError(f"Unknown VM size: {size_name}")
 
 
 def create_tfvars(request, sizes, templates):
-
-    vm_size_name = request["vm"]["size"]
-
-    vm_size = sizes[vm_size_name]
-
-    vm_id = templates[request["vm"]["template"]]
-
     tfvars = {
-        "project": request["project"],
-        "owner": request["owner"],
-        "template": request["vm"]["template"],
-        "cpu": vm_size["cpu"],
-        "memory": vm_size["memory"],
-        "disk": vm_size["disk"],
-        "vm_id": vm_id["vmid"]
+        "vms": []
     }
+
+    for vm in request["vms"]:
+        vm_size = sizes[vm["size"]]
+        vm_template = templates[vm["template"]]
+
+        tfvars["vms"].append({
+            "project": request["project"],
+            "owner": request["owner"],
+            "template": vm["template"],
+            "cpu": vm_size["cpu"],
+            "memory": vm_size["memory"],
+            "disk": vm_size["disk"],
+            "vm_id": vm_template["vmid"]
+        })
 
     with open("requests/terraform.tfvars.json", "w") as f:
         json.dump(tfvars, f, indent=2)

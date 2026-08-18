@@ -1,14 +1,16 @@
-project: api-dp3
-
+project: pkn-kds-full
 owner: michal
 
-vm:
-  size: large
-  template: spal810
+vms:
+  - size: xlarge
+    template: spal810
+
+  - size: medium
+    template: ubuntu-24.04
 
 # software:
 #   - docker
 #   - git
 
 # lifetime:
-#   days: 30
+#   days: 90
