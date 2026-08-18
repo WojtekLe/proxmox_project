@@ -6,7 +6,7 @@ vms:
     template: spal810
 
   - size: medium
-    template: ubuntu-24.04
+    template: ubuntu-26.04
 
 # software:
 #   - docker
