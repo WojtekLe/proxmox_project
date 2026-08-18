@@ -2,11 +2,11 @@ project: pkn-kds-full
 owner: michal
 
 vms:
-  - size: xlarge
+  - size: large
     template: spal810
 
   - size: medium
-    template: ubuntu-26.04
+    template: s.p.a.l.7.38
 
 # software:
 #   - docker

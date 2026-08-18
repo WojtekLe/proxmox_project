@@ -2,10 +2,10 @@
 resource "proxmox_virtual_environment_vm" "vm" {
 
   for_each = {
-    for vm in var.vms : vm.vm_id => vm
+    for index, vm in var.vms : index => vm
   }
 
-  name      = each.value.project
+  name      = "${each.value.project}_${each.key + 1}"
   node_name = "pve"
 
   clone {
