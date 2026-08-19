@@ -1,12 +1,12 @@
-project: pkn-kds-full
-owner: michal
+project: shell-s2s
+owner: wojtek
 
 vms:
-  - size: large
-    template: spal810
+  - size: small
+    template: ubuntu-26.04
 
   - size: medium
-    template: s.p.a.l.7.38
+    template: s.p.a.l.7.32
 
 # software:
 #   - docker
