@@ -68,10 +68,6 @@ jobs:
         working-directory: terraform/environments/dev
         run: terraform output
         
-      - name: VM IP
-        working-directory: terraform/environments/dev
-        run: terraform output vm_ip
-        
       - name: Get outputs
         working-directory: terraform/environments/dev
         run: terraform output -json > terraform-output.json
