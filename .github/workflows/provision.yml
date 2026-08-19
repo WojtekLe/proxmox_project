@@ -68,10 +68,6 @@ jobs:
         working-directory: terraform/environments/dev
         run: terraform output
         
-      - name: VM IP
-        working-directory: terraform/environments/dev
-        run: terraform output vm_ip
-        
       - name: Get outputs
         working-directory: terraform/environments/dev
         run: terraform output -json > terraform-output.json
@@ -81,23 +77,23 @@ jobs:
           name: terraform-output
           path: terraform/environments/dev/terraform-output.json
 
-  notify:
-    needs: terraform
+  # notify:
+  #   needs: terraform
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+  #     - uses: actions/setup-python@v5
 
-      - uses: actions/download-artifact@v4
-        with:
-          name: terraform-output
+  #     - uses: actions/download-artifact@v4
+  #       with:
+  #         name: terraform-output
       
-      - name: Copy terraform-output
-        run: |
-          cp terraform-output.json platform/notifier/
+  #     - name: Copy terraform-output
+  #       run: |
+  #         cp terraform-output.json platform/notifier/
 
-      - run: python platform/notifier/notify.py platform/notifier/terraform-output.json
+  #     - run: python platform/notifier/notify.py platform/notifier/terraform-output.json
 

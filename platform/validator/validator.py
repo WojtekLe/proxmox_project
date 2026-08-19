@@ -1,5 +1,5 @@
 import sys
-from utils import load_yaml, validate_request, get_vm_size, create_tfvars, check_files_exists
+from utils import load_yaml, validate_request, create_tfvars, check_files_exists
 import os
 
 
@@ -16,32 +16,29 @@ def main():
 
     print("Verify yaml files...")
     try:
+
         current_directory = os.getcwd()
         print("The current working directory is:", current_directory)
 
         check_files_exists(file_path)
-
         request = load_yaml(file_path)
         if request is None:
             print("Yaml file {} is empty.".format(file_path))    
             exit(2)
 
         check_files_exists(sizes_file)
-
         sizes = load_yaml(sizes_file)
         if sizes is None:
             print("Yaml file sizes.yml is empty.".format(sizes_file))    
             exit(2)
 
         check_files_exists(templates_file)
-
         template = load_yaml(templates_file)
         if template is None:
             print("Yaml file sizes.yml is empty.".format(templates_file))    
             exit(2)    
 
         errors = validate_request(request, sizes)
-
         if errors:
             for error in errors:
                 print(error)
@@ -52,18 +49,6 @@ def main():
     except FileNotFoundError:
         print("Request file not found.")
         exit(1)
-
-    print("Verify vm size...")
-    vm_config = get_vm_size(
-        request["vm"]["size"],
-        sizes
-    )
-
-    cpu = vm_config["cpu"]
-    memory = vm_config["memory"]
-    disk = vm_config
-
-    print(cpu, memory, disk)
 
     print("Create tfvars...")
     create_tfvars(request, sizes, template)

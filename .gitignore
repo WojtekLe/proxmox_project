@@ -1,1 +1,3 @@
 requests/terraform.tfvars.json
+platform/validator/__pycache__/*.pyc
+.vscode/launch.json
